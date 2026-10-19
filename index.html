@@ -1,28 +1,546 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Seasonal Color Analysis Test - Under maintenance</title>
-<meta name="robots" content="noindex, nofollow">
-<meta name="site-status" content="maintenance">
-<meta name="description" content="This tool is temporarily offline while it is rebuilt.">
+<title>Seasonal Color Analysis Test</title>
+<meta name="description" content="Find your personal color season: Spring, Summer, Autumn, or Winter palette.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://us-seasonal-color-analysis.enjoy-onepage.com/">
+<meta name="theme-color" content="#8b5cf6">
+<link rel="icon" href="/favicon.ico">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Seasonal Color Analysis Test">
+<meta property="og:title" content="Seasonal Color Analysis Test">
+<meta property="og:description" content="Find your personal color season: Spring, Summer, Autumn, or Winter palette.">
+<meta property="og:url" content="https://us-seasonal-color-analysis.enjoy-onepage.com/">
+<meta property="og:image" content="https://us-seasonal-color-analysis.enjoy-onepage.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Seasonal Color Analysis Test">
+<meta name="twitter:description" content="Find your personal color season: Spring, Summer, Autumn, or Winter palette.">
+<meta name="twitter:image" content="https://us-seasonal-color-analysis.enjoy-onepage.com/og-image.png">
+<link rel="alternate" type="application/rss+xml" title="Seasonal Color Analysis RSS" href="https://us-seasonal-color-analysis.enjoy-onepage.com/rss.xml">
+<link rel="sitemap" type="application/xml" href="https://us-seasonal-color-analysis.enjoy-onepage.com/sitemap.xml">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://us-seasonal-color-analysis.enjoy-onepage.com/#webapp",
+      "name": "Seasonal Color Analysis Test",
+      "url": "https://us-seasonal-color-analysis.enjoy-onepage.com/",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "All",
+      "inLanguage": "en",
+      "description": "An interactive 12-season personal color analysis tool diagnosing undertone, value, and chroma to generate tailored wardrobe and makeup palettes.",
+      "image": "https://us-seasonal-color-analysis.enjoy-onepage.com/og-image.png",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://us-seasonal-color-analysis.enjoy-onepage.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does the 12-season color analysis system work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The system evaluates three dimensions of Munsell color theory: Temperature (Warm vs Cool), Value (Light vs Dark), and Chroma (Bright/Clear vs Muted/Soft) to classify you into Spring, Summer, Autumn, or Winter."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I determine if my skin undertone is warm or cool?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cool undertones have blue/purple wrist veins, look best in silver jewelry, and burn easily in sun. Warm undertones have greenish veins, look best in yellow gold, and tan easily."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between Summer and Winter palettes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both seasons share cool undertones, but Summer features soft, muted, and lighter pastel shades, whereas Winter demands high contrast, deep jewel tones, and vivid pure bright colors."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my personal quiz data or facial photo stored?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. All diagnostics and virtual color draping execute strictly within your local web browser. Zero personal answers, photos, or biometric data are uploaded to any server."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- ADSENSE START: loader -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2228289204702106" crossorigin="anonymous"></script>
+<!-- ADSENSE END: loader -->
 <style>
-  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background: #f8fafc; color: #0f172a; }
-  main { max-width: 560px; margin: 12vh auto; padding: 32px 24px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; }
-  h1 { font-size: 1.4rem; margin: 0 0 12px; }
-  p { line-height: 1.6; color: #334155; }
-  a { color: #1d4ed8; font-weight: 600; }
-  .tag { display: inline-block; font-size: .8rem; font-weight: 700; color: #92400e; background: #fef3c7; border-radius: 999px; padding: 4px 10px; margin-bottom: 14px; }
+:root{--bg:#faf5ff;--card:#fff;--ink:#0f172a;--muted:#475569;--accent:#8b5cf6;--accent-hover:#7c3aed;--line:#ede9fe}
+*{box-sizing:border-box}
+html,body{margin:0;max-width:100%;overflow-x:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-wrap:anywhere}
+.header{background:linear-gradient(135deg,#6d28d9,#8b5cf6);color:#fff;text-align:center;padding:26px 16px 22px}
+.header h1{margin:0;font-size:1.7rem}
+.header-sub{opacity:.92;margin-top:6px;font-size:.95rem}
+.wrap{max-width:1100px;margin:0 auto;padding:12px 14px 8px}
+.grid2{display:grid;grid-template-columns:1fr;gap:14px}
+@media (min-width:1024px){.grid2{grid-template-columns:6fr 6fr;align-items:start}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 18px;margin:14px 0}
+.grid2 .card{margin:0}
+.card h2{font-size:1.15rem;margin:4px 0 10px}
+.lbl{display:block;font-weight:600;margin:12px 0 6px;font-size:.92rem}
+.btn{font:inherit;border:1px solid #cbd5e1;background:#fff;color:var(--ink);border-radius:10px;padding:8px 13px;cursor:pointer;transition:background .15s}
+.btn:hover{background:#f8fafc}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.btn.primary:hover{background:var(--accent-hover)}
+.btn.sm{padding:4px 10px;font-size:.86rem;border-radius:8px}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+
+/* Quiz Option Radio Buttons */
+.q-group{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.q-opt{display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid #e2e8f0;border-radius:10px;cursor:pointer;background:#f8fafc;font-size:.9rem;transition:all .15s}
+.q-opt:hover{background:#ede9fe;border-color:#c4b5fd}
+.q-opt input[type=radio]{accent-color:var(--accent);transform:scale(1.2)}
+
+/* Palette Results */
+.swatch-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+.color-chip{border-radius:8px;padding:10px 4px;text-align:center;font-size:.76rem;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6)}
+.avoid-chip{border-radius:8px;padding:8px 4px;text-align:center;font-size:.76rem;font-weight:600;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.6);opacity:.8}
+
+.metric-box{background:#faf5ff;border:1px solid #ddd6fe;border-radius:12px;padding:12px;margin:10px 0}
+.metric-val{font-size:1.6rem;font-weight:800;color:var(--accent);margin:2px 0}
+.metric-lbl{font-size:.82rem;color:var(--muted);font-weight:600;text-transform:uppercase}
+
+/* Virtual Drape Simulator */
+.drape-box{border-radius:12px;padding:16px;text-align:center;margin:12px 0;border:2px dashed #cbd5e1;transition:background-color .3s}
+.skin-avatar{width:70px;height:70px;border-radius:50%;margin:0 auto 10px;box-shadow:0 4px 10px rgba(0,0,0,.15);border:2px solid #fff}
+
+.hint{font-size:.86rem;color:var(--muted);margin:6px 0}
+.notice{border-color:#fcd34d;background:#fffbeb}
+.faq-item h3{font-size:1rem;margin:12px 0 4px}
+.faq-item p{margin:0;color:#334155}
+.src{font-size:.82rem;color:var(--muted)}
+.ad-box{max-width:1100px;margin:10px auto;padding:0 14px;background:transparent;overflow:hidden;text-align:center}
+.ad-top ins{max-height:90px}
+.footer{text-align:center;font-size:.85rem;color:var(--muted);padding:18px 14px 28px}
+.footer a{color:var(--muted);text-decoration:none}
+.footer a:hover{text-decoration:underline}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#0f172a;color:#fff;padding:10px 18px;border-radius:999px;font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50;max-width:90vw}
+.toast.show{opacity:1}
+@media (prefers-reduced-motion: reduce){.toast{transition:none}}
 </style>
 </head>
 <body>
-<main>
-  <span class="tag">Under maintenance</span>
+<header class="header">
   <h1>Seasonal Color Analysis Test</h1>
-  <p>This tool is temporarily offline. We found that the previous version did not work the way it was described, so we took it down while we rebuild it properly.</p>
-  <p>Please check back later.</p>
-  <p><a href="https://enjoy-onepage.com/">Browse our other free tools</a></p>
+  <div class="header-sub">12-Season Diagnostic Quiz · Munsell Undertone &amp; Contrast · 100% Private</div>
+</header>
+
+<!-- ADSENSE START: top -->
+<div class="ad-box ad-top">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="3824727725" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<!-- ADSENSE END: top -->
+
+<main class="wrap">
+  <div class="grid2">
+    <!-- Diagnostic Quiz Card -->
+    <section class="card" aria-labelledby="quiz-h">
+      <h2 id="quiz-h">🔍 6-Point Biometric Color Quiz</h2>
+
+      <!-- Q1: Veins -->
+      <label class="lbl">1. What color are the veins on your inner wrist?</label>
+      <div class="q-group">
+        <label class="q-opt"><input type="radio" name="qVeins" value="cool" checked> Blue or purple veins (Cool undertone)</label>
+        <label class="q-opt"><input type="radio" name="qVeins" value="warm"> Greenish or olive veins (Warm undertone)</label>
+        <label class="q-opt"><input type="radio" name="qVeins" value="neutral"> Blue-green mix or hard to tell (Neutral undertone)</label>
+      </div>
+
+      <!-- Q2: Jewelry -->
+      <label class="lbl">2. Which metallic jewelry makes your skin look vibrant?</label>
+      <div class="q-group">
+        <label class="q-opt"><input type="radio" name="qJewelry" value="cool" checked> Silver / Platinum / White Gold</label>
+        <label class="q-opt"><input type="radio" name="qJewelry" value="warm"> Yellow Gold / Brass / Bronze</label>
+        <label class="q-opt"><input type="radio" name="qJewelry" value="neutral"> Both silver and gold look equally flattering</label>
+      </div>
+
+      <!-- Q3: Sun Reaction -->
+      <label class="lbl">3. How does your skin react to direct midday sunlight?</label>
+      <div class="q-group">
+        <label class="q-opt"><input type="radio" name="qSun" value="cool" checked> Burns quickly, turns red, rarely tans</label>
+        <label class="q-opt"><input type="radio" name="qSun" value="warm"> Tans easily with minimal burning, turns golden</label>
+        <label class="q-opt"><input type="radio" name="qSun" value="neutral"> Burns initially, then gradually develops a tan</label>
+      </div>
+
+      <!-- Q4: Eye Depth -->
+      <label class="lbl">4. What is your natural eye color characteristics?</label>
+      <div class="q-group">
+        <label class="q-opt"><input type="radio" name="qEyes" value="light"> Light blue, soft grey, hazel, or light green (Light / Soft)</label>
+        <label class="q-opt"><input type="radio" name="qEyes" value="dark" checked> Deep brown, jet black, or dark chocolate (Deep / High Contrast)</label>
+        <label class="q-opt"><input type="radio" name="qEyes" value="bright"> Vibrant crystal blue, striking green, or sharp hazel (Clear / Bright)</label>
+      </div>
+
+      <!-- Q5: Hair & Contrast -->
+      <label class="lbl">5. Natural hair color and overall facial contrast?</label>
+      <div class="q-group">
+        <label class="q-opt"><input type="radio" name="qHair" value="cool" checked> Cool ash blonde, dark brunette, or blue-black</label>
+        <label class="q-opt"><input type="radio" name="qHair" value="warm"> Golden blonde, red/auburn, or warm chestnut brown</label>
+      </div>
+
+      <!-- Q6: White Fabric Test -->
+      <label class="lbl">6. Which fabric color against your bare face looks best?</label>
+      <div class="q-group">
+        <label class="q-opt"><input type="radio" name="qFabric" value="cool" checked> Pure crisp stark white</label>
+        <label class="q-opt"><input type="radio" name="qFabric" value="warm"> Soft cream, beige, or ivory</label>
+      </div>
+
+      <div class="actions">
+        <button type="button" id="btnCalculate" class="btn primary">Calculate My Season</button>
+        <button type="button" id="btnReset" class="btn">Reset Answers</button>
+      </div>
+      <p class="hint">Updates automatically as you choose answers. 100% in-browser.</p>
+    </section>
+
+    <!-- Palette & Results Card -->
+    <section class="card" aria-labelledby="results-h">
+      <h2 id="results-h">🎨 Your Seasonal Diagnosis &amp; Palette</h2>
+
+      <div class="metric-box">
+        <div class="metric-lbl">Diagnosed Season</div>
+        <div id="resSeasonName" class="metric-val">Cool Winter</div>
+        <div id="resSeasonDesc" class="hint" style="margin:0">Cool undertone · Deep value · Clear contrast</div>
+      </div>
+
+      <label class="lbl">Your Best 8 Flattering Palette Colors</label>
+      <div id="bestColorsGrid" class="swatch-row">
+        <!-- 8 swatches generated dynamically -->
+      </div>
+
+      <label class="lbl" style="margin-top:12px">4 Colors to Avoid or Keep Away From Face</label>
+      <div id="avoidColorsGrid" class="swatch-row">
+        <!-- 4 swatches generated dynamically -->
+      </div>
+
+      <!-- Virtual Drape Simulator -->
+      <div id="drapeBox" class="drape-box" style="background:#1e1b4b">
+        <div id="skinAvatar" class="skin-avatar" style="background:#fce7f3"></div>
+        <div id="drapeLabel" style="font-size:.85rem;color:#fff;font-weight:700">Virtual Drape: Royal Sapphire (#1e1b4b)</div>
+        <div class="actions" style="justify-content:center;margin-top:8px">
+          <button type="button" id="btnCycleDrape" class="btn sm" style="background:rgba(255,255,255,.2);color:#fff;border-color:transparent">Cycle Drape Color</button>
+        </div>
+      </div>
+
+      <div style="font-size:.86rem;color:#334155;border-top:1px solid var(--line);padding-top:10px;margin-top:10px">
+        <strong>Styling Recommendations:</strong>
+        <p id="stylingNotes" style="margin:4px 0">Best metals: Silver &amp; Platinum. Makeup: Berry, bold crimson, cool fuchsia. Fabrics: Silk, crisp cotton, contrast textures.</p>
+      </div>
+
+      <div class="actions" style="margin-top:14px">
+        <button type="button" id="btnCopyPalette" class="btn primary sm">📋 Copy Palette Summary</button>
+        <button type="button" id="btnShareApp" class="btn sm">🔗 Share Quiz</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- ADSENSE START: mid -->
+  <div class="ad-box ad-mid">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="1186914926" data-ad-format="rectangle" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  <!-- ADSENSE END: mid -->
+
+  <!-- Educational Guide -->
+  <section class="card" aria-labelledby="guide-h">
+    <h2 id="guide-h">📖 Color Theory: The 12-Season Munsell Framework</h2>
+    <p>Seasonal color analysis applies Albert Munsell's scientific color coordinate system (Hue, Value, and Chroma) to human undertones and facial pigmentation:</p>
+    <ul>
+      <li><strong>Temperature (Hue):</strong> Cool skin possesses blue/pink hemoglobin overtones; warm skin reflects golden/yellow melanin overtones. Wearing matching temperature garments neutralizes sallow shadows and dark under-eye circles.</li>
+      <li><strong>Value (Lightness vs Darkness):</strong> Measures the overall depth and contrast between hair, iris, and skin. High-contrast features thrive in vivid, saturated jewel tones; lower-contrast features harmonize in delicate pastels or muted earth tones.</li>
+      <li><strong>Chroma (Clarity vs Softness):</strong> Determines whether your features are complemented by pure, saturated pigment (Clear/Bright) or complex greyed/browned nuances (Muted/Soft).</li>
+    </ul>
+    <p class="src">Color theory references: Munsell A. (1905) <em>A Color Notation</em>; Jackson C. (1980) <em>Color Me Beautiful</em>; Spillane M. (1991) <em>Color Me Confident</em>.</p>
+  </section>
+
+  <section class="card" id="faq" aria-labelledby="faq-h">
+    <h2 id="faq-h">❓ Frequently Asked Questions</h2>
+    <div class="faq-item"><h3>How does the 12-season color analysis system work?</h3><p>The system evaluates three dimensions of Munsell color theory: Temperature (Warm vs Cool), Value (Light vs Dark), and Chroma (Bright/Clear vs Muted/Soft) to classify you into Spring, Summer, Autumn, or Winter.</p></div>
+    <div class="faq-item"><h3>How do I determine if my skin undertone is warm or cool?</h3><p>Cool undertones have blue/purple wrist veins, look best in silver jewelry, and burn easily in sun. Warm undertones have greenish veins, look best in yellow gold, and tan easily.</p></div>
+    <div class="faq-item"><h3>What is the difference between Summer and Winter palettes?</h3><p>Both seasons share cool undertones, but Summer features soft, muted, and lighter pastel shades, whereas Winter demands high contrast, deep jewel tones, and vivid pure bright colors.</p></div>
+    <div class="faq-item"><h3>Is my personal quiz data or facial photo stored?</h3><p>No. All diagnostics and virtual color draping execute strictly within your local web browser. Zero personal answers, photos, or biometric data are uploaded to any server.</p></div>
+  </section>
+
+  <section class="card notice" aria-labelledby="note-h">
+    <h2 id="note-h">⚠️ Lighting Notice</h2>
+    <p>For most accurate results, assess your skin tone and wrist veins under indirect natural morning daylight without makeup, artificial indoor LED lighting, or tinted sunglasses.</p>
+  </section>
 </main>
+
+<!-- ADSENSE START: bottom -->
+<div class="ad-box ad-bottom">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2228289204702106" data-ad-slot="3416334507" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<!-- ADSENSE END: bottom -->
+
+<footer class="footer">
+  <p>Free Seasonal Color Analysis Test · 100% private and client-side.</p>
+  <p><a href="/disclaimer.html">Disclaimer</a> | <a href="/privacy.html">Privacy Policy</a> | <a href="/terms.html">Terms of Service</a></p>
+</footer>
+
+<div id="global-ux-toast" class="toast" role="status" aria-live="polite"></div>
+
+<!-- LOGIC START -->
+<script>
+(function () {
+  'use strict';
+  var SITE = 'https://us-seasonal-color-analysis.enjoy-onepage.com';
+  var TOOL_NAME = 'Seasonal Color Analysis Test';
+
+  var SEASONS = {
+    'winter': {
+      name: 'Cool Winter',
+      sub: 'Cool undertone · Deep value · Clear contrast',
+      best: [
+        { name: 'Sapphire Blue', hex: '#1e3a8a' },
+        { name: 'Emerald Jewel', hex: '#047857' },
+        { name: 'Royal Purple', hex: '#581c87' },
+        { name: 'True Crimson', hex: '#b91c1c' },
+        { name: 'Stark White', hex: '#ffffff', textColor: '#0f172a' },
+        { name: 'Pitch Black', hex: '#0f172a' },
+        { name: 'Bright Magenta', hex: '#be185d' },
+        { name: 'Icy Mint', hex: '#a7f3d0', textColor: '#0f172a' }
+      ],
+      avoid: [
+        { name: 'Mustard Gold', hex: '#d97706' },
+        { name: 'Warm Terracotta', hex: '#c2410c' },
+        { name: 'Dull Khaki', hex: '#78716c' },
+        { name: 'Pale Peach', hex: '#ffedd5', textColor: '#0f172a' }
+      ],
+      styling: 'Best metals: Silver, Platinum. Makeup: Berry, deep crimson, cool fuchsia. Fabrics: Crisp cotton, velvet, satin, high-contrast monochrome.'
+    },
+    'summer': {
+      name: 'Light / Soft Summer',
+      sub: 'Cool undertone · Light value · Delicate soft chroma',
+      best: [
+        { name: 'Dusty Rose', hex: '#f43f5e' },
+        { name: 'Powder Blue', hex: '#93c5fd', textColor: '#0f172a' },
+        { name: 'Lavender Mist', hex: '#c084fc', textColor: '#0f172a' },
+        { name: 'Sage Green', hex: '#84cc16' },
+        { name: 'Cool Slate', hex: '#64748b' },
+        { name: 'Soft Navy', hex: '#1e293b' },
+        { name: 'Periwinkle', hex: '#818cf8' },
+        { name: 'Muted Mauve', hex: '#9d174d' }
+      ],
+      avoid: [
+        { name: 'Stark Orange', hex: '#ea580c' },
+        { name: 'Neon Yellow', hex: '#eab308' },
+        { name: 'Golden Brown', hex: '#78350f' },
+        { name: 'Harsh Black', hex: '#000000' }
+      ],
+      styling: 'Best metals: Brushed Silver, White Gold. Makeup: Soft rose, sheer berry, plum tints. Fabrics: Linen, soft cashmere, flowing silks.'
+    },
+    'autumn': {
+      name: 'Warm / Deep Autumn',
+      sub: 'Warm undertone · Deep value · Rich earthy chroma',
+      best: [
+        { name: 'Burnt Orange', hex: '#c2410c' },
+        { name: 'Olive Green', hex: '#3f6212' },
+        { name: 'Mustard Yellow', hex: '#ca8a04' },
+        { name: 'Rich Terracotta', hex: '#9a3412' },
+        { name: 'Warm Chocolate', hex: '#451a03' },
+        { name: 'Deep Teal', hex: '#0f766e' },
+        { name: 'Forest Green', hex: '#14532d' },
+        { name: 'Warm Camel', hex: '#b45309' }
+      ],
+      avoid: [
+        { name: 'Icy Blue', hex: '#e0f2fe', textColor: '#0f172a' },
+        { name: 'Stark Magenta', hex: '#db2777' },
+        { name: 'Pure White', hex: '#ffffff', textColor: '#0f172a' },
+        { name: 'Cool Grey', hex: '#94a3b8' }
+      ],
+      styling: 'Best metals: Yellow Gold, Antique Brass, Copper. Makeup: Warm terracotta, spiced cinnamon, brick red. Fabrics: Wool, suede, tweed, corduroy.'
+    },
+    'spring': {
+      name: 'Warm / Clear Spring',
+      sub: 'Warm undertone · Light value · Crisp vibrant chroma',
+      best: [
+        { name: 'Coral Pink', hex: '#fb7185' },
+        { name: 'Warm Turquoise', hex: '#06b6d4' },
+        { name: 'Sunny Gold', hex: '#eab308' },
+        { name: 'Peach Sorbet', hex: '#fdba74', textColor: '#0f172a' },
+        { name: 'Bright Apple', hex: '#22c55e' },
+        { name: 'Warm Ivory', hex: '#fef3c7', textColor: '#0f172a' },
+        { name: 'Vibrant Aqua', hex: '#0ea5e9' },
+        { name: 'Poppy Red', hex: '#dc2626' }
+      ],
+      avoid: [
+        { name: 'Dull Grey', hex: '#475569' },
+        { name: 'Heavy Black', hex: '#020617' },
+        { name: 'Dark Burgundy', hex: '#4a044e' },
+        { name: 'Muddy Taupe', hex: '#71717a' }
+      ],
+      styling: 'Best metals: Polished Yellow Gold, Rose Gold. Makeup: Coral, warm peach, glossy watermelon. Fabrics: Crisp cotton, lightweight knit, poplin.'
+    }
+  };
+
+  var activeSeasonKey = 'winter';
+  var drapeIndex = 0;
+
+  function $(id) { return document.getElementById(id); }
+
+  function showToast(msg) {
+    var toast = $('global-ux-toast');
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toast._tid);
+    toast._tid = setTimeout(function () { toast.classList.remove('show'); }, 2200);
+  }
+
+  function getRadio(name) {
+    var el = document.querySelector('input[name="' + name + '"]:checked');
+    return el ? el.value : 'cool';
+  }
+
+  function calculateSeason() {
+    var veins = getRadio('qVeins');
+    var jewelry = getRadio('qJewelry');
+    var sun = getRadio('qSun');
+    var eyes = getRadio('qEyes');
+    var hair = getRadio('qHair');
+    var fabric = getRadio('qFabric');
+
+    var coolScore = 0;
+    var warmScore = 0;
+
+    if (veins === 'cool') coolScore += 2; else if (veins === 'warm') warmScore += 2; else { coolScore++; warmScore++; }
+    if (jewelry === 'cool') coolScore += 2; else if (jewelry === 'warm') warmScore += 2; else { coolScore++; warmScore++; }
+    if (sun === 'cool') coolScore += 1; else if (sun === 'warm') warmScore += 1;
+    if (hair === 'cool') coolScore += 1; else if (hair === 'warm') warmScore += 1;
+    if (fabric === 'cool') coolScore += 1; else if (fabric === 'warm') warmScore += 1;
+
+    var isCool = coolScore >= warmScore;
+    var isDark = (eyes === 'dark');
+
+    if (isCool && isDark) activeSeasonKey = 'winter';
+    else if (isCool && !isDark) activeSeasonKey = 'summer';
+    else if (!isCool && isDark) activeSeasonKey = 'autumn';
+    else activeSeasonKey = 'spring';
+
+    renderResults();
+  }
+
+  function renderResults() {
+    var season = SEASONS[activeSeasonKey];
+    $('resSeasonName').textContent = season.name;
+    $('resSeasonDesc').textContent = season.sub;
+    $('stylingNotes').textContent = season.styling;
+
+    // Best colors
+    var bGrid = $('bestColorsGrid');
+    bGrid.innerHTML = '';
+    season.best.forEach(function (c) {
+      var chip = document.createElement('div');
+      chip.className = 'color-chip';
+      chip.style.backgroundColor = c.hex;
+      if (c.textColor) chip.style.color = c.textColor;
+      chip.textContent = c.name;
+      chip.title = c.name + ' (' + c.hex + ')';
+      bGrid.appendChild(chip);
+    });
+
+    // Avoid colors
+    var aGrid = $('avoidColorsGrid');
+    aGrid.innerHTML = '';
+    season.avoid.forEach(function (c) {
+      var chip = document.createElement('div');
+      chip.className = 'avoid-chip';
+      chip.style.backgroundColor = c.hex;
+      if (c.textColor) chip.style.color = c.textColor;
+      chip.textContent = c.name;
+      aGrid.appendChild(chip);
+    });
+
+    // Update Virtual Drape
+    drapeIndex = 0;
+    updateDrape();
+  }
+
+  function updateDrape() {
+    var season = SEASONS[activeSeasonKey];
+    var c = season.best[drapeIndex % season.best.length];
+    $('drapeBox').style.backgroundColor = c.hex;
+    $('drapeLabel').textContent = 'Virtual Drape: ' + c.name + ' (' + c.hex + ')';
+    $('drapeLabel').style.color = c.textColor ? c.textColor : '#ffffff';
+  }
+
+  // Event handlers
+  document.querySelectorAll('input[type=radio]').forEach(function (r) {
+    r.addEventListener('change', calculateSeason);
+  });
+
+  $('btnCalculate').addEventListener('click', function () {
+    calculateSeason();
+    showToast('Diagnosis updated for ' + SEASONS[activeSeasonKey].name);
+  });
+
+  $('btnReset').addEventListener('click', function () {
+    document.querySelector('input[name="qVeins"][value="cool"]').checked = true;
+    document.querySelector('input[name="qJewelry"][value="cool"]').checked = true;
+    document.querySelector('input[name="qSun"][value="cool"]').checked = true;
+    document.querySelector('input[name="qEyes"][value="dark"]').checked = true;
+    document.querySelector('input[name="qHair"][value="cool"]').checked = true;
+    document.querySelector('input[name="qFabric"][value="cool"]').checked = true;
+    calculateSeason();
+    showToast('Reset to default answers');
+  });
+
+  $('btnCycleDrape').addEventListener('click', function () {
+    drapeIndex++;
+    updateDrape();
+  });
+
+  $('btnCopyPalette').addEventListener('click', function () {
+    var season = SEASONS[activeSeasonKey];
+    var bestHexes = season.best.map(function (c) { return c.name + ' (' + c.hex + ')'; }).join(', ');
+    var text = '🎨 Personal Color Diagnosis: ' + season.name + '\n' +
+      '• Characteristics: ' + season.sub + '\n' +
+      '• Best Colors: ' + bestHexes + '\n' +
+      '• ' + season.styling + '\n\n' +
+      'Diagnosed via ' + TOOL_NAME + ': ' + SITE + '/';
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function () {
+        showToast('Color palette copied to clipboard!');
+      });
+    } else {
+      showToast('Could not copy automatically.');
+    }
+  });
+
+  $('btnShareApp').addEventListener('click', function () {
+    var shareMsg = '🎨 Free Seasonal Color Analysis Test\n👉 ' + TOOL_NAME + ': ' + SITE + '/';
+    if (navigator.share) {
+      navigator.share({ title: TOOL_NAME, text: shareMsg, url: SITE + '/' }).catch(function (e) {
+        if (!e || e.name !== 'AbortError') showToast('Link ready to share!');
+      });
+    } else {
+      showToast('Quiz URL: ' + SITE + '/');
+    }
+  });
+
+  calculateSeason();
+})();
+</script>
+<!-- LOGIC END -->
 </body>
 </html>
